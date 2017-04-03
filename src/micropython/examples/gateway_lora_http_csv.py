@@ -18,7 +18,7 @@ class LoRaHttpCsvGateway:
                 "gateway":  "area-42",
 
                 # Node ID is obtained from call to ``.transmit``
-                #"node":     "node-1",
+                "node":     None,
             }
         )
 
