@@ -1,0 +1,6 @@
+- Patch against email.parser
+- Patch against http.client re. server not available
+
+      File "/Users/amo/.micropython/lib/http/client.py", line 876, in send
+    AttributeError: 'NoneType' object has no attribute 'sendall'
+
