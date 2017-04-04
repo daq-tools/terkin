@@ -14,9 +14,7 @@ from uterkin.telemetry import CSVTelemetryNode, TelemetryTopologies
 
 # Create a "Node API" telemetry client object
 telemetry = CSVTelemetryNode(
-    #"https://swarm.hiveeyes.org/api",
     "http://swarm.hiveeyes.org/api-notls",
-    #"mqtt://swarm.hiveeyes.org",
     address = {
         "realm":    "hiveeyes",
         "network":  "testdrive",
