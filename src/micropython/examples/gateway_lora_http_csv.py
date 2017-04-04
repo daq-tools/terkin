@@ -9,9 +9,7 @@ class LoRaHttpCsvGateway:
 
         # Create a "Node API" telemetry client object
         self.telemetry = CSVTelemetryNode(
-            #"https://swarm.hiveeyes.org/api",
             "http://swarm.hiveeyes.org/api-notls",
-            #"mqtt://swarm.hiveeyes.org",
             {
                 "realm":    "hiveeyes",
                 "network":  "testdrive",
