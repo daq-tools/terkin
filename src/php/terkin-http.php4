@@ -85,6 +85,35 @@ class TelemetryClient {
         return $result;
     }
 
+    function transmit_csv($payload) {
+        /*
+         * Submit CSV telemetry data using HTTP POST request
+         * Serialization: none
+         */
+
+        // Use key 'http' even if you send the request to https://...
+        $options = array(
+            'http' => array(
+                'header'  => "Content-type: text/csv\r\n",
+                'method'  => 'POST',
+                'content' => $payload
+            ),
+            'ssl' => array(
+                'allow_self_signed' => true,
+                // TODO: Let's check whether we should not always disable this.
+                'verify_peer' => false,
+            ),
+        );
+
+        $result = http_get_contents($this->uri, $options);
+
+        if ($result === FALSE) {
+            trigger_error("Could not submit telemetry data to '$this->uri', payload='$payload'", E_USER_ERROR);
+        }
+
+        return $result;
+    }
+
 }
 
 class TelemetryNode {
@@ -109,6 +138,10 @@ class TelemetryNode {
 
     function transmit($data) {
         return $this->client->transmit($data);
+    }
+
+    function transmit_csv($paylaod) {
+        return $this->client->transmit_csv($paylaod);
     }
 
 }
